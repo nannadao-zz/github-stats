@@ -1,0 +1,136 @@
+body {
+  margin: 0;
+  top: 0;
+  left: 0;
+  background-color:rgb(41, 41, 41);
+}
+
+#content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo {
+  font-family: 'Teko', sans-serif;
+  color: #3BD97F;
+  font-size: 60px;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+}
+
+#inputField {
+  width: 300px;
+  height: 35px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  border-bottom: 1px solid #3BD97F;
+  color: #dadada;
+}
+
+input:focus {
+  outline: none;
+}
+
+#submitButton {
+  background-color: #C3F25C;
+  margin-left: 1rem;
+  border: none;
+  padding: 10px 22px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  color: rgb(41, 41, 41);
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav h1 {
+  font-size: 35px;
+  font-family: 'Teko', sans-serif;
+  letter-spacing: 0.5px;
+  color: #3BD97F;
+  margin: 10px 0;
+}
+
+#result-content {
+  margin: 2rem 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+#github-stats {
+  flex-basis: 70%;
+}
+
+#basic-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#result-content img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  align-self: center;
+}
+
+#basic-info {
+  font-family: 'Noto Sans', sans-serif;
+  flex-basis: 20%;
+}
+
+#fullname {
+  align-self: center;
+}
+
+#fullname h3 {
+  color: #F2F2F2;
+  font-size: 22px;
+  font-family: 'Noto Sans', sans-serif;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+#username {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #F2F2F2;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+
+#username a {
+  text-decoration: none;
+  margin: 0 1rem;
+  color: #F2F2F2;
+}
+
+#company {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 18px;
+  color: #F2F2F2;
+  margin: 0.5rem 0;
+}
+
+#company p {
+  margin: 0 1rem;
+}
+
+#github-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

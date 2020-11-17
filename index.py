@@ -27,6 +27,7 @@ def result():
     sorted_language_list = {}
     language_codes = []
     language_values = []
+    repo_links = []
     colors = ["#76D9B9", "#15AB89", "#09736A", "#0E5159", "#52959d"]
     try:
       response = requests.get(f'https://api.github.com/users/{github_username}', headers=HEADERS).json()
@@ -36,17 +37,28 @@ def result():
         "url": response["html_url"],
         "avatar": response["avatar_url"],
         "company": response["company"],
-        "repo_number": response["public_repos"],
+        "repos": repo_links
       }
-
-      repos_response = requests.get(f'https://api.github.com/users/{github_username}/repos?per_page=100', headers=HEADERS).json()
-      for repo in repos_response:
-        if repo["language"] not in language_list:
-          language_list.update({
-              repo["language"]: 1
-            })
-        else:
-          language_list[repo["language"]] += 1
+      
+      page_range = response["public_repos"] // 30 + 1
+      have_extra_page = (response["public_repos"] % 30 > 0)
+      if have_extra_page:
+        page_range = response["public_repos"] // 30 + 2
+      
+      for page_number in range(1, page_range):
+        repos_response = requests.get(f'https://api.github.com/users/{github_username}/repos?page={page_number}', headers=HEADERS).json()
+        for repo in repos_response:
+          repo_links.append({
+            "repo_name": repo["name"],
+            "repo_link": repo["html_url"],
+            "repo_language": repo["language"]
+          })
+          if repo["language"] not in language_list:
+            language_list.update({
+                repo["language"]: 1
+              })
+          else:
+            language_list[repo["language"]] += 1
 
       sortedValuesList = sorted(language_list.values(), reverse = True)
   
@@ -68,7 +80,7 @@ def result():
         "message": "Cannot find Github user"
       }
     finally:
-      print(sorted_language_list)
+      print(user_data["repos"])
 
     return render_template("result.html", value=user_data, language_codes=language_codes, language_values=language_values, colors=colors)
 

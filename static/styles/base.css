@@ -5,6 +5,11 @@ body {
   background-color:rgb(41, 41, 41);
 }
 
+body a {
+  text-decoration: none;
+  color: #F2F2F2;
+}
+
 #content {
   height: 100vh;
   display: flex;
@@ -52,7 +57,7 @@ nav {
   align-items: center;
 }
 
-nav h1 {
+nav h1 a {
   font-size: 35px;
   font-family: 'Teko', sans-serif;
   letter-spacing: 0.5px;
@@ -132,5 +137,49 @@ nav h1 {
 #github-stats {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
+}
+
+#repos-table {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#repos-table table {
+  color: #F2F2F2;
+  font-size: 16px;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+table, th, td {
+  border: 1px solid rgb(90, 90, 90);
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+table tr {
+  display: flex;
+  height: 40px;
+}
+
+table th {
+  background-color: mediumaquamarine;
+  font-weight: 600;
+  color: rgb(41, 41, 41);
+}
+
+.table-project {
+  flex-basis: 60%;
+  text-align: start;
+}
+
+.table-project i {
+  margin-left: 1.5rem;
+  font-size: 14px;
+}
+
+.table-language {
+  flex-basis: 40%;
+  text-align: start;
 }

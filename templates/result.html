@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <nav> 
-  <h1> GitHubStats </h1>
+
+  <h1> <a href="/"> GitHubStats </a> </h1>
 </nav>
 <div id="result-content">
   <div id="basic-info"> 
@@ -28,8 +29,28 @@
   <div id="github-stats">
     <canvas id="chart" style="display: block; width: 50%; height: 50%;"></canvas>
 
-    <div>
-      
+    <div id="repos-table">
+      <table>
+        <tr>
+          <th class="table-project"> Project </th>
+          <th class="table-language"> Main Language </th>
+        </tr>
+
+        {% for item in value["repos"] %}
+          <tr>
+            <td class="table-project">  
+              <a href="{{ item["repo_link"] }}" >
+                {{ item["repo_name"] }}
+              </a>
+              <a href="{{ item["repo_link"] }}"> 
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </td>
+            <td class="table-language"> {{ item["repo_language"] }} </td>
+          </tr>
+        {% endfor %}
+
+      </table>
     </div>
   </div>
 

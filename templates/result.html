@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block content %}
+<nav> 
+  <h1> GitHubStats </h1>
+</nav>
+<div id="result-content">
+  <div id="basic-info"> 
+    <img src="{{ value["avatar"] }}" />
+
+    <div id="fullname">
+      <h3> {{ value["fullname"] }} </h3>
+    </div>
+
+    <div id="username">
+      <i class="fas fa-link"></i>
+      <a href="{{ value["url"] }}">
+        {{ value["username"] }}
+      </a>
+    </div>
+
+    <div id="company">
+      <i class="far fa-building"></i>
+      <p> 
+        {{ value["company"] }}
+      </p>
+    </div>
+  </div>
+
+  <div id="github-stats">
+    <canvas id="chart" style="display: block; width: 50%; height: 50%;"></canvas>
+
+    <div>
+      
+    </div>
+  </div>
+
+</div>
+
+<script>
+  var ctx = document.getElementById("chart").getContext("2d");
+
+  var data = {
+    datasets: [{
+        data: {{ language_values }},
+        backgroundColor: {{ colors | tojson }}
+      }],
+    labels: {{ language_codes | tojson }},
+  };
+
+  var myPieChart = new Chart(ctx, {
+    type: "pie",
+    data: data,
+  });
+</script>
+
+{% endblock %}

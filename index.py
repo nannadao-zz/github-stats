@@ -23,12 +23,19 @@ def result():
   if "github_username" in session:
     github_username = session["github_username"]
     user_data = {}
+    repos_commits = {}
     language_list = {}
     sorted_language_list = {}
     language_codes = []
     language_values = []
+    commit_weeks = []
+    commit_values = []
     repo_links = []
     colors = ["#76D9B9", "#15AB89", "#09736A", "#0E5159", "#52959d"]
+
+    for number in range(1, 53):
+      repos_commits['Week %s' % number] = 0
+
     try:
       response = requests.get(f'https://api.github.com/users/{github_username}', headers=HEADERS).json()
       user_data = {
@@ -59,10 +66,17 @@ def result():
               })
           else:
             language_list[repo["language"]] += 1
+          
+          # Combine commit counts across repos
+          repo_api_link = repo["url"]
+          repo_commits = requests.get(f'{repo_api_link}/stats/participation', headers=HEADERS).json()
+          commits = repo_commits["owner"]
+          for i in range(52):
+            repos_commits['Week %s' % (i + 1)] += commits[i]
+          
+      sortedLanguageValuesList = sorted(language_list.values(), reverse = True)
 
-      sortedValuesList = sorted(language_list.values(), reverse = True)
-  
-      for sorted_value in sortedValuesList:
+      for sorted_value in sortedLanguageValuesList:
         for key, value in language_list.items():
           if value == sorted_value:
             sorted_language_list.update({
@@ -75,14 +89,24 @@ def result():
       for count in sorted_language_list.values():
         language_values.append(count)
 
+      for k, v in repos_commits.items():
+        commit_weeks.append(k)
+        commit_values.append(v)
+
     except:
       user_data = {
         "message": "Cannot find Github user"
       }
-    finally:
-      print(user_data["repos"])
 
-    return render_template("result.html", value=user_data, language_codes=language_codes, language_values=language_values, colors=colors)
+    return render_template(
+      "result.html", 
+      value=user_data, 
+      language_codes=language_codes, 
+      language_values=language_values, 
+      colors=colors,
+      commit_weeks=commit_weeks,
+      commit_values=commit_values
+    )
 
 if __name__ == "__main__":
   app.run()

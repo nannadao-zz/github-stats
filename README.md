@@ -13,7 +13,7 @@ Project is using python v3.9
 
 * Install packages
 
-`pipenv install requests flask`
+`pipenv install requests flask pandas xlsxwriter`
 
 * Start app
 

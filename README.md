@@ -1,7 +1,11 @@
 ## About
 
-This is a project using Python and Flask to visualize data from Github API.
-Project is using python v3.9
+This is a project using Python and Flask to visualize data and generate downloadable Excel data file. 
+Project is using python v3.9 & Github API.
+
+## Screenshots
+<p align="center"><img src="./screenshots/home_page.png" align="center" width="80%"/></p>
+<p align="center"><img src="./screenshots/result_page.png" align="center" width="80%"/></p>
 
 ## Usage 
 

@@ -28,12 +28,18 @@
 
   <div id="github-stats">
     <div id="stats-pie">
-      <p> Main Languages </h1>
+      <p> Main Languages </p>
       <canvas id="chart-pie" style="display: block; width: 50%; height: 50%;"></canvas>
     </div>
 
     <div id="stats-line">
-      <p> Commits Last 52 Weeks </h1>
+      <p> Commits Last 52 Weeks 
+        <span> 
+          <a href="{{url_for('download_excel')}}">
+            <i class="fas fa-download"></i> 
+          </a>
+        </span>
+      </p>
       <canvas id="chart-line" style="display: block; width: 70%; height: 70%;"></canvas>
     </div>
 

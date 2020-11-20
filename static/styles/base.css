@@ -160,6 +160,12 @@ nav h1 a {
   margin: 0;
 }
 
+#stats-line i {
+  color: #33c0a2;
+  font-size: 18px;
+  margin-left: 1rem;
+}
+
 #repos-table {
   margin-top: 2rem;
   display: flex;

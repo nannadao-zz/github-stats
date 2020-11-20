@@ -4,9 +4,8 @@ This is a project using Python and Flask to visualize data and generate download
 Project is using python v3.9 & Github API.
 
 ## Screenshots
-![Screenshot1](/screenshots/home_page.png =250x)
-
-![Screenshot2](/screenshots/result_page.png =250x)
+<p align="center"><img src="./screenshots/home_pageshot.png" align="center" width="50%"/></p>
+<p align="center"><img src="./screenshots/result_page.png" align="center" width="50%"/></p>
 
 ## Usage 
 
